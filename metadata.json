@@ -1,0 +1,6 @@
+{
+  "name": "ATLAS — Project Intelligence Platform",
+  "description": "Understand any codebase before you touch it. Interactive software knowledge graph, dependency impact analysis, architecture maps, and grounded AI code reasoning.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

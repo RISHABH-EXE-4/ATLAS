@@ -1,0 +1,353 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Global Dynamic Theme Variables */
+:root {
+  --theme-accent: #d4ff59;
+  --theme-accent-hover: #b8ea34;
+  --theme-accent-dark: #84cc16;
+  --theme-accent-rgb: 212, 255, 89;
+  --theme-accent-contrast: #000000;
+  --theme-accent-glow: 0 0 20px rgba(212, 255, 89, 0.45);
+  --theme-accent-glow-sm: 0 0 12px rgba(212, 255, 89, 0.3);
+  --theme-accent-light: rgba(212, 255, 89, 0.15);
+  --theme-accent-border: rgba(212, 255, 89, 0.35);
+  --theme-bg-app: #090a0f;
+  --theme-bg-surface: #14151e;
+  --theme-bg-card: #1a1c27;
+  --theme-border: #232635;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--theme-bg-app, #090a0f);
+  color: #f3f4f6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dynamic Surface & Background Overrides for App Themes */
+[class*="bg-[#090a0f]"],
+.bg-\[\#090a0f\] {
+  background-color: var(--theme-bg-app, #090a0f) !important;
+}
+
+[class*="bg-[#14151e]"],
+[class*="bg-[#12141e]"],
+[class*="bg-[#12141f]"],
+.bg-\[\#14151e\] {
+  background-color: var(--theme-bg-surface, #14151e) !important;
+}
+
+[class*="bg-[#1a1c27]"],
+[class*="bg-[#1a1d2b]"],
+[class*="bg-[#161722]"],
+[class*="bg-[#0d0e15]"],
+[class*="bg-[#0f1322]"],
+[class*="bg-[#1f2231]"],
+[class*="bg-[#0f1017]"],
+[class*="bg-[#0e121e]"],
+[class*="bg-[#0d1512]"],
+[class*="bg-[#0c0d14]"],
+[class*="bg-[#0c0d13]"],
+[class*="bg-[#0a0c13]"],
+.bg-\[\#1a1c27\],
+.bg-\[\#1a1d2b\],
+.bg-\[\#161722\] {
+  background-color: var(--theme-bg-card, #1a1c27) !important;
+}
+
+[class*="border-[#232635]"],
+[class*="border-[#262838]"],
+[class*="border-[#2a2e42]"],
+[class*="border-[#1e202d]"],
+[class*="border-[#1c1e2a]"],
+.border-\[\#232635\],
+.border-\[\#262838\] {
+  border-color: var(--theme-border, #232635) !important;
+}
+
+/* Dynamic Accent Overrides across all application views */
+/* Matches standalone bg-[#d4ff59] without opacity modifier */
+[class~="bg-[#d4ff59]"],
+[class*=" bg-[#d4ff59] "],
+[class^="bg-[#d4ff59] "],
+[class$=" bg-[#d4ff59]"],
+[class="bg-[#d4ff59]"],
+.bg-\[\#d4ff59\] {
+  background-color: var(--theme-accent) !important;
+  color: var(--theme-accent-contrast) !important;
+}
+
+/* Ensure contrast for icons and text inside accent buttons/cards */
+[class*="bg-[#d4ff59]"] svg,
+.bg-\[\#d4ff59\] svg {
+  color: var(--theme-accent-contrast) !important;
+}
+
+[class*="bg-[#d4ff59]"] .text-black,
+.bg-\[\#d4ff59\] .text-black {
+  color: var(--theme-accent-contrast) !important;
+}
+
+[class*="bg-[#d4ff59]"] .text-black\/80,
+.bg-\[\#d4ff59\] .text-black\/80 {
+  color: color-mix(in srgb, var(--theme-accent-contrast) 80%, transparent) !important;
+}
+
+/* Translucent accent backgrounds */
+[class*="bg-[#d4ff59]/"],
+.bg-\[\#d4ff59\]\/20,
+.bg-\[\#d4ff59\]\/15,
+.bg-\[\#d4ff59\]\/10,
+.bg-\[\#d4ff59\]\/5 {
+  background-color: var(--theme-accent-light) !important;
+  color: var(--theme-accent) !important;
+}
+
+/* Accent text colors */
+[class*="text-[#d4ff59]"],
+.text-\[\#d4ff59\] {
+  color: var(--theme-accent) !important;
+}
+
+/* Accent borders */
+[class~="border-[#d4ff59]"],
+[class*=" border-[#d4ff59] "],
+[class^="border-[#d4ff59] "],
+[class$=" border-[#d4ff59]"],
+[class="border-[#d4ff59]"],
+.border-\[\#d4ff59\] {
+  border-color: var(--theme-accent) !important;
+}
+
+[class*="border-[#d4ff59]/"],
+.border-\[\#d4ff59\]\/60,
+.border-\[\#d4ff59\]\/50,
+.border-\[\#d4ff59\]\/40,
+.border-\[\#d4ff59\]\/30 {
+  border-color: var(--theme-accent-border) !important;
+}
+
+/* Accent shadows and glows */
+[class*="shadow-[#d4ff59]"],
+[class*="rgba(212,255,89"],
+.shadow-\[\#d4ff59\]\/30,
+.shadow-\[\#d4ff59\]\/20,
+.shadow-\[\#d4ff59\]\/15,
+.shadow-\[\#d4ff59\]\/10,
+.shadow-\[\#d4ff59\]\/5 {
+  --tw-shadow-color: rgba(var(--theme-accent-rgb), 0.35) !important;
+  box-shadow: 0 10px 25px -5px rgba(var(--theme-accent-rgb), 0.35), var(--theme-accent-glow) !important;
+}
+
+.shadow-\[0_0_20px_rgba\(212\,255\,89\,0\.4\)\],
+.shadow-\[0_0_15px_rgba\(212\,255\,89\,0\.2\)\] {
+  box-shadow: var(--theme-accent-glow) !important;
+}
+
+/* Form and input elements */
+.accent-\[\#d4ff59\],
+input[type="range"],
+input[type="checkbox"] {
+  accent-color: var(--theme-accent) !important;
+}
+
+[class*="focus:border-[#d4ff59]"]:focus,
+[class*="focus\\:border-\\[\\#d4ff59\\]"]:focus,
+.focus\:border-\[\#d4ff59\]:focus {
+  border-color: var(--theme-accent) !important;
+}
+
+[class*="focus:ring-[#d4ff59]"]:focus,
+[class*="focus\\:ring-\\[\\#d4ff59\\]"]:focus,
+.focus\:ring-\[\#d4ff59\]:focus {
+  --tw-ring-color: var(--theme-accent) !important;
+}
+
+/* Universal SVG Accent recoloring */
+svg [fill="#d4ff59"],
+[fill="#d4ff59"] {
+  fill: var(--theme-accent) !important;
+}
+
+svg [stroke="#d4ff59"],
+[stroke="#d4ff59"] {
+  stroke: var(--theme-accent) !important;
+}
+
+svg [flood-color="#d4ff59"],
+[flood-color="#d4ff59"] {
+  flood-color: var(--theme-accent) !important;
+}
+
+/* Scrollbar theme styling */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--theme-bg-app, #090a0f);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-accent-border, rgba(255, 255, 255, 0.2));
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-accent);
+}
+
+@layer utilities {
+  .bg-dot-grid {
+    background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(212, 255, 89, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(212, 255, 89, 0.45);
+  }
+}
+
+@keyframes pulsePurpleGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.45);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Animation Utility Classes */
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-pulse-purple {
+  animation: pulsePurpleGlow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmerSweep 3s infinite;
+}
+
+/* Card micro-interaction transitions */
+.ui-card-interactive {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.ui-card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.7);
+}
+
+/* Custom developer scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}

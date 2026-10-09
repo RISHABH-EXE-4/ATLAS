@@ -1,0 +1,7 @@
+[
+  "test_ingest_limits.py::test_ast_symbol_extraction_for_cpp",
+  "test_ingest_limits.py::test_discovery_does_not_truncate_at_50",
+  "test_ingest_limits.py::test_enforces_atlas_max_files_env_variable",
+  "test_ingest_limits.py::test_ingest_pipeline_indexes_all_files_above_50",
+  "test_ingest_limits.py::test_language_extension_mappings"
+]
